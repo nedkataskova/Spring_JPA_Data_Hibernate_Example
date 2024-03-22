@@ -124,9 +124,9 @@ public class QueryMethodsTest {
     void findByDateCreatedBetweenMethod(){
 
         // start date
-        LocalDateTime startDate = LocalDateTime.of(2022, 2,13,17,48,33);
+        LocalDateTime startDate = LocalDateTime.of(2024, 1, 1, 18, 0, 0);
         // end date
-        LocalDateTime endDate = LocalDateTime.of(2022,2,13,18,15,21);
+        LocalDateTime endDate = LocalDateTime.of(2024, 10, 10, 18, 0, 0);
 
         List<Product> products = productRepository.findByDateCreatedBetween(startDate, endDate);
 
