@@ -2,6 +2,7 @@ package com.jpa.demo.repository;
 
 import com.jpa.demo.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -87,4 +88,15 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @return
      */
     List<Product> findByDateCreatedBetween(LocalDateTime startDate, LocalDateTime endDate);
+
+
+    /**
+     * Returns a products whose description contains description
+     * @param description
+     * @return
+     */
+
+    //Creation database query with @Query annotation and JPQL
+    @Query("select p from Product p where p.description like %?1")
+    List<Product> findProductByContainingDescription(String description);
 }

@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-
     @Autowired
     private ProductService service;
 
@@ -33,6 +32,11 @@ public class ProductController {
     @GetMapping("/productById/{id}")
     public Product findProductById(@PathVariable Long id) {
         return service.getProductById(id);
+    }
+
+    @GetMapping("/productByDescription")
+    public List<Product> findProductsByDescription(@RequestParam String description) {
+        return service.findProductsByDescription(description);
     }
 
     @GetMapping("/product/{name}")

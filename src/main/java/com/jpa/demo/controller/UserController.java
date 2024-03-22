@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import java.util.List;
 import java.util.Objects;
 
 @RequestMapping("/api/v1/user")
@@ -24,6 +24,13 @@ public class UserController {
         User user = service.findUserByEmail(email);
         if(Objects.isNull(user)) throw new ResourceNotFoundException("User not found");
         return user;
+    }
+
+    @GetMapping("/findUsersBetweenAge")
+    public List<User> findUsersBetweenAge(@RequestParam int minAge, @RequestParam int maxAge) throws ResourceNotFoundException {
+        List<User> users = service.findUserOnAgeBetween(minAge, maxAge);
+        if(Objects.isNull(users)) throw new ResourceNotFoundException("User not found");
+        return users;
     }
 
 }
