@@ -32,6 +32,10 @@ public class ProductService {
         return productRepository.findByName(name);
     }
 
+    public List<Product> findProductsByDescription(String description) {
+        return productRepository.findProductByContainingDescription(description);
+    }
+
     public String deleteProduct(Long id) {
         productRepository.deleteById(id);
         return "Product with id: " + id + " is removed";
